@@ -38,6 +38,9 @@ module Twitter
     # Raised when Twitter returns the HTTP status code 406
     NotAcceptable = Class.new(ClientError)
 
+    # Raised when Twitter returns the HTTP status code 420
+    TooManyConnections = Class.new(ClientError)
+
     # Raised when Twitter returns the HTTP status code 422
     UnprocessableEntity = Class.new(ClientError)
 
@@ -66,6 +69,7 @@ module Twitter
       404 => Twitter::Error::NotFound,
       406 => Twitter::Error::NotAcceptable,
       413 => Twitter::Error::RequestEntityTooLarge,
+      420 => Twitter::Error::TooManyConnections,
       422 => Twitter::Error::UnprocessableEntity,
       429 => Twitter::Error::TooManyRequests,
       500 => Twitter::Error::InternalServerError,
